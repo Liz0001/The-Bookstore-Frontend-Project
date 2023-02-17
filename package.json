@@ -1,0 +1,19 @@
+{
+  "name": "assignment1",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "start": "vite",
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "sass": "^1.58.2",
+    "vite": "^4.1.0"
+  },
+  "dependencies": {
+    "bootstrap": "^5.2.3"
+  }
+}
