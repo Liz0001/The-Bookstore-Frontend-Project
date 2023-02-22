@@ -8,6 +8,10 @@ main .row:first-of-type {
   margin-top: 100px;
 }
 
+.basket-section {
+  height: 80px;
+}
+
 .logo-text {
   font-family: 'Cinzel';
   font-weight: 700;
@@ -21,4 +25,41 @@ main .row:first-of-type {
   height: 100%;
   width: 45px;
   margin: 5px;
+}
+
+// 1200px and bigger
+@media (min-width: 1200px) {
+
+  .navbar-toggler.burgerButton {
+    display: none;
+  }
+
+  .navbar-toggler.basketButton {
+    justify-content: flex-end;
+  }
+}
+
+// up to 600px
+@media (max-width: 600px) {
+
+  .logo-text,
+  .footer-text {
+    margin-top: 5px;
+    font-size: 20px;
+  }
+
+  button.basketButton.navbar-toggler,
+  button.burgerButton.navbar-toggler {
+    width: 40px;
+    height: 30px;
+    padding: 0;
+  }
+
+  svg.bi.bi-basket3,
+  .navbar-toggler-icon {
+    width: 25px;
+    height: 20px;
+    border-radius: 1px;
+  }
+
 }
