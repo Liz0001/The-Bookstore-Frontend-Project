@@ -1,1 +1,14 @@
-@import 'bootstrap/scss/functions';
+@import '../node_modules/bootstrap/scss/functions';
+@import '../node_modules/bootstrap/scss/variables';
+
+
+
+$primary: #7999ae;
+$font-family-sans-serif: 'Merriweather';
+$font-family-base: 'Merriweather';
+$font-size-base: 1.3rem;
+
+
+$theme-colors: (
+  "primary": $primary
+);

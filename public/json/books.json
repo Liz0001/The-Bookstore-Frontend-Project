@@ -1,0 +1,202 @@
+[
+  {
+    "id": 1,
+    "title": "Book title",
+    "author": "Some Author",
+    "description": "Lorem ipsum / or your text",
+    "category": "UX",
+    "price": 150
+  },
+  {
+    "id": 2,
+    "title": "Redhead from Wyoming, The",
+    "author": "Hallsy Merrall",
+    "description": "Lyme disease, unspecified",
+    "category": "CSS",
+    "price": 470
+  },
+  {
+    "id": 3,
+    "title": "Hot Saturday",
+    "author": "Yardley Battrum",
+    "description": "Pedestrian with other conveyance injured in collision with railway train or railway vehicle in nontraffic accident, subsequent encounter",
+    "category": "UX",
+    "price": 491
+  },
+  {
+    "id": 4,
+    "title": "Harold and Maude",
+    "author": "Curry Copelli",
+    "description": "Sternal manubrial dissociation, subsequent encounter for fracture with delayed healing",
+    "category": "CSS",
+    "price": 453
+  },
+  {
+    "id": 5,
+    "title": "Flawless",
+    "author": "Sheila-kathryn Coulthart",
+    "description": "Contusion, laceration, and hemorrhage of cerebellum with loss of consciousness greater than 24 hours without return to pre-existing conscious level with patient surviving, subsequent encounter",
+    "category": "UX",
+    "price": 342
+  },
+  {
+    "id": 6,
+    "title": "Mosquito Net, The (La mosquitera)",
+    "author": "Claiborne Jude",
+    "description": "Nondisplaced transverse fracture of shaft of unspecified femur, subsequent encounter for open fracture type I or II with nonunion",
+    "category": "JavaScript",
+    "price": 436
+  },
+  {
+    "id": 7,
+    "title": "Phil Spector",
+    "author": "Kristyn Woolham",
+    "description": "Laceration of tail of pancreas, unspecified degree, subsequent encounter",
+    "category": "JavaScript",
+    "price": 452
+  },
+  {
+    "id": 8,
+    "title": "Adam",
+    "author": "Bunni Dobble",
+    "description": "Unspecified disease of left inner ear",
+    "category": "HTML",
+    "price": 464
+  },
+  {
+    "id": 9,
+    "title": "Answer This!",
+    "author": "Michal Yukhnev",
+    "description": "Laceration with foreign body of unspecified wrist",
+    "category": "JavaScript",
+    "price": 431
+  },
+  {
+    "id": 10,
+    "title": "The Trans-Atlantic Mystery",
+    "author": "Jilleen Langstaff",
+    "description": "Cervical disc disorder, unspecified",
+    "category": "UX",
+    "price": 324
+  },
+  {
+    "id": 11,
+    "title": "In Order Not to Be Here",
+    "author": "Libby Menego",
+    "description": "Secondary osteoarthritis, left shoulder",
+    "category": "CSS",
+    "price": 297
+  },
+  {
+    "id": 12,
+    "title": "American Horror House (Sorority Horror House)",
+    "author": "Creighton Shea",
+    "description": "Burns involving 30-39% of body surface with 20-29% third degree burns",
+    "category": "UX",
+    "price": 376
+  },
+  {
+    "id": 13,
+    "title": "Internecine Project, The",
+    "author": "Hervey Blowfield",
+    "description": "Unspecified pedal cyclist injured in collision with other motor vehicles in nontraffic accident",
+    "category": "HTML",
+    "price": 448
+  },
+  {
+    "id": 14,
+    "title": "Deceit",
+    "author": "Sandy Olufsen",
+    "description": "Idiopathic corneal edema, left eye",
+    "category": "JavaScript",
+    "price": 358
+  },
+  {
+    "id": 15,
+    "title": "Pumpkinhead II: Blood Wings",
+    "author": "Micky Snartt",
+    "description": "High grade squamous intraepithelial lesion on cytologic smear of anus (HGSIL)",
+    "category": "JavaScript",
+    "price": 307
+  },
+  {
+    "id": 16,
+    "title": "Inside Deep Throat",
+    "author": "Simone Burdus",
+    "description": "Unspecified injury of prostate",
+    "category": "HTML",
+    "price": 219
+  },
+  {
+    "id": 17,
+    "title": "Three Quarter Moon",
+    "author": "Merrill Boyer",
+    "description": "Corrosion of second degree of right thigh",
+    "category": "HTML",
+    "price": 475
+  },
+  {
+    "id": 18,
+    "title": "Opposing Force",
+    "author": "Iolande Filipson",
+    "description": "Fistula, hip",
+    "category": "UX",
+    "price": 417
+  },
+  {
+    "id": 19,
+    "title": "Little Boy Blue",
+    "author": "Dory Skeath",
+    "description": "Contaminated medical or biological substance administered by unspecified means",
+    "category": "UX",
+    "price": 371
+  },
+  {
+    "id": 20,
+    "title": "Drömkåken",
+    "author": "Ker Toy",
+    "description": "Poisoning by, adverse effect of and underdosing of vitamins",
+    "category": "HTML",
+    "price": 415
+  },
+  {
+    "id": 21,
+    "title": "Casanova Brown",
+    "author": "Kristoffer Verecker",
+    "description": "Furuncle of neck",
+    "category": "UX",
+    "price": 331
+  },
+  {
+    "id": 22,
+    "title": "Paris",
+    "author": "Herman Dagnall",
+    "description": "Nondisplaced transverse fracture of shaft of left tibia, subsequent encounter for open fracture type IIIA, IIIB, or IIIC with nonunion",
+    "category": "CSS",
+    "price": 409
+  },
+  {
+    "id": 23,
+    "title": "Breakin' All the Rules",
+    "author": "Electra Gossage",
+    "description": "Salter-Harris Type III physeal fracture of upper end of radius",
+    "category": "JavaScript",
+    "price": 488
+  },
+  {
+    "id": 24,
+    "title": "One Hour with You",
+    "author": "Eddi Ramshaw",
+    "description": "Unstable burst fracture of T5-T6 vertebra, subsequent encounter for fracture with nonunion",
+    "category": "HTML",
+    "price": 304
+  },
+  {
+    "id": 25,
+    "title": "Cheerleader Massacre",
+    "author": "Wally Sheach",
+    "description": "Other specified diabetes mellitus with proliferative diabetic retinopathy without macular edema, bilateral",
+    "category": "CSS",
+    "price": 500
+  }
+]

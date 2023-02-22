@@ -1,4 +1,24 @@
 @import 'google-fonts';
-@import 'variable-overrides';
-@import 'bootstrap/scss/bootstrap';
 @import 'sticky-footer';
+@import 'variable-overrides';
+@import '../node_modules/bootstrap/scss/bootstrap';
+
+
+main .row:first-of-type {
+  margin-top: 100px;
+}
+
+.logo-text {
+  font-family: 'Cinzel';
+  font-weight: 700;
+  display: inline-block;
+  color: #42484e;
+  font-size: 30px;
+  margin-top: 5px;
+}
+
+.logo {
+  height: 100%;
+  width: 45px;
+  margin: 5px;
+}
