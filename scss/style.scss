@@ -4,12 +4,27 @@
 @import '../node_modules/bootstrap/scss/bootstrap';
 
 
+body::-webkit-scrollbar {
+  display: none;
+}
+
 main .row:first-of-type {
   margin-top: 100px;
 }
 
 .basket-section {
-  height: 80px;
+  height: 83px;
+}
+
+main .card .row:first-of-type {
+  margin-top: 0;
+}
+
+.photo {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
 }
 
 .logo-text {
@@ -27,8 +42,19 @@ main .row:first-of-type {
   margin: 5px;
 }
 
+// ////////////////////
+
+
+.navigation-section {
+  background-image: url('https://source.unsplash.com/random/?background');
+  // background-color: #a4c0db;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+// /////////////////////
 // 1200px and bigger
-@media (min-width: 1200px) {
+@media (min-width: 992px) {
 
   .navbar-toggler.burgerButton {
     display: none;
@@ -48,6 +74,14 @@ main .row:first-of-type {
     font-size: 20px;
   }
 
+  .logo {
+    width: 30px;
+  }
+
+  .basket-section {
+    height: 65px;
+  }
+
   button.basketButton.navbar-toggler,
   button.burgerButton.navbar-toggler {
     width: 40px;
@@ -61,5 +95,35 @@ main .row:first-of-type {
     height: 20px;
     border-radius: 1px;
   }
+}
 
+
+/////////////////////////////////////////
+// GALAXY fold - style, if there should be any 
+@media (max-width: 350px) {
+
+  .logo-text,
+  .footer-text {
+    font-size: 18px;
+  }
+
+  nav .logo {
+    display: none;
+  }
+
+  .basket-section {
+    height: 55px;
+  }
+
+  button.basketButton.navbar-toggler,
+  button.burgerButton.navbar-toggler {
+    width: 25px;
+    height: 25px;
+  }
+
+  svg.bi.bi-basket3,
+  .navbar-toggler-icon {
+    width: 15px;
+    height: 15px;
+  }
 }

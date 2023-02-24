@@ -7,7 +7,6 @@ ASSIGNMENT 1 (2,5 HP - LEARNING GOAL 1 AND 2)
 
 Assignment
 ==========
-0. <s> Set up the project. </s>
 
 1. Create a web shop / online store that sells computer books about frontend development.
 

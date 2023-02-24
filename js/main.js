@@ -1,11 +1,3 @@
-// Import our custom CSS
-// import '../scss/styles.scss'
-// import '../scss/style.scss'
-
-// // Import all of Bootstrap's JS
-// import * as bootstrap from 'bootstrap'
-
-
 
 //////////////////////////////////////////
 //////////////////////////////////////////
@@ -68,12 +60,12 @@ function repeatElements() {
 
 // special fix on repeat of random unsplash image
 // (so that we don't cache and show the same image)
-function unsplashFix(html) {
-  return html.replace(
-    /(https:\/\/source.unsplash.com\/random\/?[^"]*)/g,
-    '$1&' + Math.random()
-  );
-}
+// function unsplashFix(html) {
+//   return html.replace(
+//     /(https:\/\/source.unsplash.com\/random\/?[^"]*)/g,
+//     '$1&' + Math.random()
+//   );
+// }
 
 // listen to click on all a tags
 $('body').addEventListener('click', e => {
@@ -99,7 +91,7 @@ window.addEventListener('popstate', () => loadPage());
 // (single page application) of the main content
 const pageCache = {};
 async function loadPage(src = location.pathname) {
-  src = src === '/' ? '/start' : src;
+  src = src === '/' ? '/home' : src;
   src = `/html/pages/${src}.html`;
   let html = pageCache[src] || await fetchText(src);
   pageCache[src] = html;
@@ -108,6 +100,7 @@ async function loadPage(src = location.pathname) {
   componentMount();
   // set active link in navbar
   setActiveLinkInNavbar();
+  showAllTheBooksInfo()
 }
 
 // set the correct link active in navbar match on
@@ -129,6 +122,7 @@ function setActiveLinkInNavbar() {
 
 
 
+
 // initially, on hard load/reload:
 // mount components and load the page
 componentMount().then(x => loadPage());
@@ -136,3 +130,28 @@ componentMount().then(x => loadPage());
 //////////////////////////////////////////
 //////////////////////////////////////////
 
+import { getJSON } from "./utils/getJsonFile"
+let books
+
+async function showAllTheBooksInfo() {
+  const JSONfile = "/json/books.json"
+  books = await getJSON(JSONfile)
+  showBooks()
+}
+
+
+
+function showBooks() {
+
+
+
+}
+
+
+// filter the elements
+// ['ux', 'js', 'js', 'ux']
+//   .filter(x => x !== ux)
+//   .map(x => '<>')
+
+  // .reduce() -
+  // .sort()
