@@ -22,8 +22,3 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
-
-
-html/pages/books.html
-html/pages/contact.html
-html/pages/home.html

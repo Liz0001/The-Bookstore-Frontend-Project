@@ -136,16 +136,62 @@ let books
 async function showAllTheBooksInfo() {
   const JSONfile = "/json/books.json"
   books = await getJSON(JSONfile)
-  showBooks()
+
+  displayBooks()
 }
 
 
 
-function showBooks() {
+async function displayBooks() {
 
+  // let description = await (await (await fetch("api/?type=hipster-centric&paras=3")).json())
 
+  let bookItem = books.map(({ title, author, description, category, price }) => /*html*/ `
+
+    <!-- my card -->
+    <div class="card mb-3">
+      <div class="row g-0">
+        <div class="col-md-4">
+          <img src="https://source.unsplash.com/random/?book" class="img-fluid rounded-start photo" alt=${title}>
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h3 class="card-title">${title}</h3>
+            <p>By: ${author}</p>
+            <p><span class="book-category">Category: </span>${category}</p>
+            <p><span class="price">Price: </span>${price}</p>
+            <div class="limit">
+              <p class="card-text">${description}</p>
+            </div>
+
+            <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+              Read More
+            </button>
+
+            <a href="#" class="btn btn-primary">Buy now</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- my card ends -->
+  `)
+  // cut()
+  document.querySelector(".bookList").innerHTML = bookItem.join("")
 
 }
+
+// async function cut() {
+//   let para = document.querySelector(".limit");
+//   let text = para.innerHTML;
+//   para.innerHTML = "";
+//   let words = text.split(" ");
+//   for (i = 0; i < 30; i++) {
+//     para.innerHTML += words[i] + " ";
+//   }
+//   para.innerHTML += "...";
+// }
+
+
 
 
 // filter the elements
@@ -155,3 +201,5 @@ function showBooks() {
 
   // .reduce() -
   // .sort()
+
+

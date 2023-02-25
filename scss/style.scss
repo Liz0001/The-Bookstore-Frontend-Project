@@ -8,6 +8,23 @@ body::-webkit-scrollbar {
   display: none;
 }
 
+////////////
+/// custom scrollbar
+// body::-webkit-scrollbar {
+//   width: 5px;
+//   height: 8px;
+//   background-color: #aaa;
+//   /* or add it to the track */
+// }
+
+// /* Add a thumb */
+
+// body::-webkit-scrollbar-thumb {
+//   background: #000;
+// }
+////////////
+
+
 main .row:first-of-type {
   margin-top: 100px;
 }
@@ -42,14 +59,39 @@ main .card .row:first-of-type {
   margin: 5px;
 }
 
-// ////////////////////
+.card-text {
+  height: 100%;
+}
 
+// limits the words on the book card
+.limit {
+  max-width: 80ch;
+  padding: 0px 0 20px;
+  // margin-bottom: 10px;
+  // border: 1px solid #fed;
+  // background-color: black;
+}
+
+.limit p {
+  // max-width: 80ch;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+}
+
+// ////////////////////
 
 .navigation-section {
   background-image: url('https://source.unsplash.com/random/?background');
   // background-color: #a4c0db;
   background-size: cover;
   background-attachment: fixed;
+  box-shadow: 0px 2px 7px #b0b7be;
+}
+
+.card {
+  box-shadow: 2px 2px 7px #ced4d8;
 }
 
 // /////////////////////

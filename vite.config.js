@@ -12,5 +12,14 @@ export default defineConfig({
   },
   plugins: [
     liveReload('./html/**/*.html', { alwaysReload: true })
-  ]
+  ],
+  server: {
+    proxy: {
+      "/api": {
+        target: "https://hipsum.co",
+        changeOrigin: true,
+        secure: true
+      }
+    }
+  }
 });
