@@ -1,15 +1,42 @@
 <div class="row">
   <div class="col offset-lg-1 col-lg-10 offset-xl-2 col-xl-8">
-    <h2 class="mb-5">Books</h2>
-    <!-- </div> -->
-    <!-- </div> -->
+    <h2 class="mb-3">Books</h2>
 
 
-    <div class="filtering"></div>
-    <div class="ordering"></div>
-    <div class="bookList"></div>
+    <!-- the main filter -->
+    <div class="choose-filter"></div>
+
+    <div class="author-filtering"></div>
+    <div class="category-filtering"> </div>
+
+    <div class="price-filtering"></div>
+    <div class="title-filtering"></div>
+    <div class="ascending-descending"></div>
+    <hr>
 
 
+    <!-- ADD MENU AND COLLAPSE AREA FOR FILTERS -->
+    <!-- <div>
+      <a class="link-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample"
+        aria-expanded="false" aria-controls="collapseExample">
+        Filter
+      </a>
+
+      <div class="collapse" id="collapseExample">
+        <nav class="nav justify-content-center">
+          <a class="nav-link active" aria-current="page" href="#">Authors</a>
+          <a class="nav-link" href="#">Category</a>
+          <a class="nav-link" href="#">Price</a>
+          <a class="nav-link" href="#">Title</a>
+        </nav>
+      </div>
+    </div> -->
+
+
+    <!-- ALL THE BOOKS -->
+    <div class="bookList mt-3"></div>
+
+    <!--modal  -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered modal-xl">
         <div class="modal-content">
@@ -18,19 +45,17 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            ...
+
+            hello
+
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
+            <button type="button" class="btn btn-primary add-to-basket">Add to Basket</button>
+
           </div>
         </div>
       </div>
     </div>
-
-
-
-    <!-- https://getbootstrap.com/docs/5.3/components/card/ -->
 
   </div>
 </div>

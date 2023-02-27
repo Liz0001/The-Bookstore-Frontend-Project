@@ -100,7 +100,11 @@ async function loadPage(src = location.pathname) {
   componentMount();
   // set active link in navbar
   setActiveLinkInNavbar();
-  showAllTheBooksInfo()
+
+  // show ALL books on the BOOKS page & filters etc..
+  if (window.location.pathname === "/books") {
+    showBooksAndFilters()
+  }
 }
 
 // set the correct link active in navbar match on
@@ -129,69 +133,226 @@ componentMount().then(x => loadPage());
 
 //////////////////////////////////////////
 //////////////////////////////////////////
+// BOOKS
 
 import { getJSON } from "./utils/getJsonFile"
 let books
 
-async function showAllTheBooksInfo() {
-  const JSONfile = "/json/books.json"
-  books = await getJSON(JSONfile)
+let categories = []
+let authors = []
+let titles = []
+let prices = []
+
+let categoryFilterApplied = "All"
+let authorFilterApplied = "All"
+let titleFilterApplied = "All"
+let priceFilterApplied = "All"
+
+
+let filter = ""
+let ascendDescend = ""
+
+
+async function showBooksAndFilters() {
+  books = await getJSON("/json/books.json")
 
   displayBooks()
+
+  // chooseYourFilter()
+
+  getCategories()
+  getAuthors()
+  // getPrices()
+  // getTitles()
+
+  // rest
+  addCategoryFilter()
+  addAuthorFilter()
+
 }
+
+
+// Initially the user chooses a filter
+// function chooseYourFilter() {
+
+//   displayBooks();
+
+//   document.querySelector(".choose-filter").innerHTML = /*html*/ `
+//     <label>Filter by:
+//       <select class="sortOption">
+//         <option></option>
+//         <option>Author</option>
+//         <option>Category</option>
+//         <option>Price</option>
+//         <option>Title</option>
+//       </select>
+//     </label>
+//   `;
+//   document.querySelector(".sortOption").addEventListener('change', event => {
+//     filter = event.target.value
+//     if (filter === "") {
+//       document.querySelector(".category-filtering").style.display = "none"
+//       displayBooks();
+
+//     }
+//     else if (filter === "Category") {
+//       document.querySelector(".category-filtering").style.display = "show"
+//       addFilters()
+//     }
+//     else if (filter === "Price") {
+//       // document.querySelector(".category-filtering").style.display = "none"
+//     } else if (filter === "Title") {
+//       // document.querySelector(".category-filtering").style.display = "none"
+//     }
+//     // displayBooks();
+
+//   })
+// }
+
+
+/////////////////////////////////////
+// getting all of the book categories
+function getCategories() {
+  let allCat = books.map(book => book.category)
+  categories = [...new Set(allCat)]
+  categories.sort()
+}
+
+function getAuthors() {
+  let allAuthorsNames = []
+  let allAuthors = books.map(book => book.author.split(", "))
+  allAuthors.forEach(names => names.forEach(name => allAuthorsNames.push(name)))
+  authors = [...new Set(allAuthorsNames)]
+  authors.sort(function (a, b) {
+    let aa = a.split(" ")
+    let bb = b.split(" ")
+    return aa[aa.length - 1].toLowerCase() > bb[bb.length - 1].toLowerCase() ? 1 : -1
+  })
+
+}
+
+
+////////////////////////////////////=
+// add the catogory dropdown filter
+function addCategoryFilter() {
+
+  document.querySelector(".category-filtering").innerHTML = /*html*/`
+  <label> Category:
+    <select class="categoryFilter">
+      <option> All </option>
+        ${categories.map(category => `<option> ${category} </option>`).join("")}
+      </select>
+    </label>
+    `;
+  document.querySelector(".categoryFilter").addEventListener('change', event => {
+    categoryFilterApplied = event.target.value;
+    displayBooks()
+  })
+}
+
+
+function addAuthorFilter() {
+  document.querySelector(".author-filtering").innerHTML = /*html*/ `<label> Authors:
+    <select class="authorFilter">
+      <option> All </option>
+        ${authors.map(author => `<option> ${author} </option>`).join("")}
+      </select>
+    </label>
+    `;
+  document.querySelector(".authorFilter").addEventListener('change', event => {
+    authorFilterApplied = event.target.value;
+    displayBooks()
+  })
+}
+
+
+// function addFilters() {
+//   document.querySelector(".filtering").innerHTML = /*html*/ `
+//   <label> Category:  </label>
+
+//       <button class="btn scategoryFilter"> All </button>
+//         ${categories.map(cat => `<button class=" btn categoryFilter"> ${cat} </button>`).join("")}
+
+//     `;
+//   document.querySelector(".categoryFilter").addEventListener('change', event => {
+//     categoryFilterApplied = event.target.value;
+//     displayBooks()
+//   })
+
+/* <nav class="navbar navbar-inverse">
+  <ul class="nav navbar-nav">
+    <li><a href="#">Link</a></li>
+    <li><a href="#">Link</a></li>
+  </ul>
+  <p class="navbar-text">Some text</p>
+</nav> */
+// }
+
+
 
 
 
 async function displayBooks() {
+  let filteredBooks
+
+  filteredBooks = books.filter(({ category }) => categoryFilterApplied === "All"
+    || categoryFilterApplied === category)
+
+  filteredBooks = books.filter(({ author }) => authorFilterApplied === "All"
+    || author.includes(authorFilterApplied))
 
   // let description = await (await (await fetch("api/?type=hipster-centric&paras=3")).json())
+  // -----------------------
 
-  let bookItem = books.map(({ title, author, description, category, price }) => /*html*/ `
-
+  let bookItem = filteredBooks.map(({
+    id, title, author, description, category, price, cover
+  }) => /*html*/ `
+    
     <!-- my card -->
     <div class="card mb-3">
       <div class="row g-0">
+
         <div class="col-md-4">
-          <img src="https://source.unsplash.com/random/?book" class="img-fluid rounded-start photo" alt=${title}>
+          <img src=${cover} class="img-fluid rounded-start photo" alt=${title}>
         </div>
+
         <div class="col-md-8">
           <div class="card-body">
+            <p>${category}</p>
             <h3 class="card-title">${title}</h3>
             <p>By: ${author}</p>
-            <p><span class="book-category">Category: </span>${category}</p>
-            <p><span class="price">Price: </span>${price}</p>
-            <div class="limit">
-              <p class="card-text">${description}</p>
-            </div>
+            <p>${price}<span class="price"> SEK</span></p>
 
-            <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <button type="button" class="btn btn-outline-primary read-more" data-bs-toggle="modal" data-bs-target="#exampleModal">
               Read More
             </button>
-
-            <a href="#" class="btn btn-primary">Buy now</a>
+            <button href="#" class="btn btn-primary add-to-basket">Add to Basket</Button>
+             
           </div>
         </div>
       </div>
     </div>
     <!-- my card ends -->
   `)
-  // cut()
   document.querySelector(".bookList").innerHTML = bookItem.join("")
 
 }
 
-// async function cut() {
-//   let para = document.querySelector(".limit");
-//   let text = para.innerHTML;
-//   para.innerHTML = "";
-//   let words = text.split(" ");
-//   for (i = 0; i < 30; i++) {
-//     para.innerHTML += words[i] + " ";
-//   }
-//   para.innerHTML += "...";
-// }
 
 
+//   if (window.location.pathname === "/books") {
+// const element = document.querySelector(".bookList")
+// element.innerHTML = bookItem.join("")
+// $('.card').addEventListener('click', e => {
+//   console.log(clicked)
+// })
+
+
+
+
+
+// let getData = document.querySelector(".card")
+// let youtubeimgsrc = document.querySelector("youtubeimg").src;
 
 
 // filter the elements

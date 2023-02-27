@@ -64,21 +64,21 @@ main .card .row:first-of-type {
 }
 
 // limits the words on the book card
-.limit {
-  max-width: 80ch;
-  padding: 0px 0 20px;
-  // margin-bottom: 10px;
-  // border: 1px solid #fed;
-  // background-color: black;
-}
+// .limit {
+//   max-width: 80ch;
+//   padding: 0px 0 20px;
+//   // margin-bottom: 10px;
+//   // border: 1px solid #fed;
+//   // background-color: black;
+// }
 
-.limit p {
-  // max-width: 80ch;
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-line-clamp: 4;
-  -webkit-box-orient: vertical;
-}
+// .limit p {
+//   // max-width: 80ch;
+//   overflow: hidden;
+//   display: -webkit-box;
+//   -webkit-line-clamp: 3;
+//   -webkit-box-orient: vertical;
+// }
 
 // ////////////////////
 
