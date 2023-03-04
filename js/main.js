@@ -1,8 +1,6 @@
 
 //////////////////////////////////////////
 //////////////////////////////////////////
-
-
 // HTML-component + SPA/routing example in Vanilla JS
 // © ironboy, Node Hill AB, 2023
 
@@ -40,23 +38,23 @@ async function componentMount() {
     let html = await fetchText(src);
     replaceElement(c, html);
   }
-  repeatElements();
+  // repeatElements();
 }
 
 // repeat DOM elements if they have the attribute 
 // repeat = "x" set to a positive number
-function repeatElements() {
-  while (true) {
-    let r = $('[repeat]');
-    if (!r) { break; }
-    let count = Math.max(1, +r.getAttribute('repeat'));
-    r.removeAttribute('repeat');
-    for (let i = 0; i < count - 1; i++) {
-      let html = unsplashFix(r.outerHTML);
-      replaceElement(r, html, false);
-    }
-  }
-}
+// function repeatElements() {
+//   while (true) {
+//     let r = $('[repeat]');
+//     if (!r) { break; }
+//     let count = Math.max(1, +r.getAttribute('repeat'));
+//     r.removeAttribute('repeat');
+//     for (let i = 0; i < count - 1; i++) {
+//       let html = unsplashFix(r.outerHTML);
+//       replaceElement(r, html, false);
+//     }
+//   }
+// }
 
 // special fix on repeat of random unsplash image
 // (so that we don't cache and show the same image)
@@ -131,9 +129,10 @@ function setActiveLinkInNavbar() {
 // mount components and load the page
 componentMount().then(x => loadPage());
 
-//////////////////////////////////////////
-//////////////////////////////////////////
-// BOOKS
+// //////////////////////////////////////////
+// //////////////////////////////////////////
+// // BOOKS
+
 
 import { getJSON } from "./utils/getJsonFile"
 let books
@@ -309,7 +308,7 @@ async function displayBooks() {
   }) => /*html*/ `
     
     <!-- my card -->
-    <div class="card mb-3">
+    <div class="card book-card mb-3" data-id=${id}>
       <div class="row g-0">
 
         <div class="col-md-4">
@@ -323,36 +322,44 @@ async function displayBooks() {
             <p>By: ${author}</p>
             <p>${price}<span class="price"> SEK</span></p>
 
-            <button type="button" class="btn btn-outline-primary read-more" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <button type="button" class="btn btn-outline-primary read-more" data-bs-toggle="modal" data-bs-target="#exampleModal" >
               Read More
-            </button>
-            <button href="#" class="btn btn-primary add-to-basket">Add to Basket</Button>
-             
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- my card ends -->
-  `)
-  document.querySelector(".bookList").innerHTML = bookItem.join("")
+            </button >
 
+            <button href="#" class="btn btn-primary add-to-basket">
+              Add to basket
+            </Button>
+                    
+          </div >
+        </div >
+      </div >
+    </div >
+    <!--my card ends -->
+    `)
+  document.querySelector(".bookList").innerHTML = bookItem.join("")
 }
 
 
+document.querySelector('body').addEventListener('click', event => {
 
-//   if (window.location.pathname === "/books") {
-// const element = document.querySelector(".bookList")
-// element.innerHTML = bookItem.join("")
-// $('.card').addEventListener('click', e => {
-//   console.log(clicked)
-// })
+  let cards = event.target.closest('.book-card')
+  if (cards) {
+    console.log("here", cards.getAttribute("data-id"))
+    const id = Number(cards.getAttribute("data-id"))
+    let b = books.filter(b => b.id === id)
 
+    document.querySelector('.book-title-main').innerHTML = b[0].title;
+    document.querySelector('.book-title').innerHTML = b[0].title;
+    document.querySelector('.book-author').innerHTML = b[0].author;
+    document.querySelector('.book-desc').innerHTML = b[0].description;
+    document.querySelector('.book-category').innerHTML = b[0].category;
+    document.querySelector('.book-price').innerHTML = b[0].price;
+    let cover = `<img src=${b[0].cover} class="col-md-6 float-md-end mb-3 ms-md-3" alt=${b[0].title}>`
+    document.querySelector('.book-cover').innerHTML = cover;
 
+  }
+})
 
-
-
-// let getData = document.querySelector(".card")
-// let youtubeimgsrc = document.querySelector("youtubeimg").src;
 
 
 // filter the elements

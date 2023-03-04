@@ -63,6 +63,13 @@ main .card .row:first-of-type {
   height: 100%;
 }
 
+
+//////////////////////
+/// Modal
+// .book-cover img {
+//   max-height: 500px;
+// }
+
 // limits the words on the book card
 // .limit {
 //   max-width: 80ch;
@@ -83,8 +90,8 @@ main .card .row:first-of-type {
 // ////////////////////
 
 .navigation-section {
-  background-image: url('https://source.unsplash.com/random/?background');
-  // background-color: #a4c0db;
+  // background-image: url('https://source.unsplash.com/random/?background');
+  background-color: #a4c0db;
   background-size: cover;
   background-attachment: fixed;
   box-shadow: 0px 2px 7px #b0b7be;

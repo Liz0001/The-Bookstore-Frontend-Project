@@ -38,19 +38,51 @@
 
     <!--modal  -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered modal-xl">
+      <div class="modal-dialog modal-dialog-centered modal-xl modal-dialog-scrollable">
         <div class="modal-content">
+
+          <!-- header -->
           <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+            <h1 class="modal-title fs-5 book-title-main" id="exampleModalLabel"></h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
-          <div class="modal-body">
 
-            hello
+          <!-- body -->
+          <div class="modal-body">
+            <!-- ..... -->
+            <!-- <div class="book-cover"></div>
+            <p class="book-category"></p>
+            <h2 class="book-title"></h2>
+            <h3 class="book-author"></h3>
+            <p class="book-price"></p>
+
+            <p class="book-desc"></p> -->
+
+
+            <div class="clearfix">
+              <!-- <img src="..." class="col-md-6 float-md-end mb-3 ms-md-3" alt="..."> -->
+              <div class="book-cover"></div>
+              <h2 class="book-title"></h2>
+              <h3>By <span class="book-author"></span></h3>
+              <p>Price: <span class="book-price"></span> SEK</p>
+              <p class="book-category"></p>
+
+              <p class="book-desc"></p>
+
+            </div>
+
+
+
+
+
 
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-primary add-to-basket">Add to Basket</button>
+
+
+
+
 
           </div>
         </div>
