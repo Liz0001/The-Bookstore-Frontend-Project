@@ -149,7 +149,7 @@ function getCategories() {
 function getAuthors() {
   let allAuthors = books.map(book => book.author)
   authors = [...new Set(allAuthors)]
-  authors.sort(function (a, b) {
+  authors = authors.sort(function (a, b) {
     let aa = a.split(" ")
     let bb = b.split(" ")
     return aa[aa.length - 1].toLowerCase() > bb[bb.length - 1].toLowerCase() ? 1 : -1
@@ -241,9 +241,7 @@ function filterAll() {
   }
 
   return filteredBooks
-
 }
-
 
 
 
@@ -269,27 +267,63 @@ function sorting() {
 
   document.querySelector(".sortingOption").addEventListener('change', event => {
     sortingBy = event.target.value
-    displayPersons()
+    displayBooks()
+
   })
 }
 
 
 function sortAll(filteredBooks) {
 
-  // if (chosenSortOption === "last name") { sortByLastName(filteredPersons) }
-  // if (chosenSortOption === "age") { sortByAge(filteredPersons) }
+  console.log(filteredBooks)
+  if (sortingBy === "Author: A -> Z") { return sortByAuthorAaZz(filteredBooks) }
+  if (sortingBy === "Author: Z -> A") { return sortByAuthorZzAa(filteredBooks) }
+  if (sortingBy === "Price: low to high") { return sortByPriceToHigher(filteredBooks) }
+  if (sortingBy === "Price: high to low") { return sortByPriceToLower(filteredBooks) }
+  if (sortingBy === "Title: A -> Z") { return sortByTitleAaZz(filteredBooks) }
+  if (sortingBy === "Title: Z -> A") { return sortByTitleZzAa(filteredBooks) }
+
+}
+
+function sortByAuthorAaZz(filteredBooks) {
+  return filteredBooks.sort(function ({ author: a }, { author: b }) {
+    if (a == b) { return 0 }
+    let aa = a.split(" ")
+    let bb = b.split(" ")
+    return aa[aa.length - 1] > bb[bb.length - 1] ? 1 : -1
+  })
+}
 
 
+function sortByAuthorZzAa(filteredBooks) {
+  return filteredBooks.sort(function ({ author: a }, { author: b }) {
+    if (a == b) { return 0 }
+    let aa = a.split(" ")
+    let bb = b.split(" ")
+    return aa[aa.length - 1] > bb[bb.length - 1] ? -1 : 1
+  })
+}
 
-  //       <option>None</option>
-  //       <option>Author: A -> Z</option>
-  //       <option>Author: Z -> A</option>
-  //       <option>Price: low to high</option>
-  //       <option>Price: high to low</option>
-  //       <option>Title: A -> Z</option>
-  //       <option>Title: Z -> A</option>
 
-  return filteredBooks
+function sortByPriceToHigher(filteredBooks) {
+  return filteredBooks.sort(({ price: aPrice }, { price: bPrice }) =>
+    aPrice > bPrice ? 1 : -1)
+}
+
+function sortByPriceToLower(filteredBooks) {
+  return filteredBooks.sort(({ price: aPrice }, { price: bPrice }) =>
+    aPrice > bPrice ? -1 : 1)
+}
+
+
+function sortByTitleAaZz(filteredBooks) {
+  return filteredBooks.sort(({ title: aTitle }, { title: bTitle }) =>
+    aTitle > bTitle ? 1 : -1)
+}
+
+function sortByTitleZzAa(filteredBooks) {
+  return filteredBooks.sort(({ title: aTitle }, { title: bTitle }) =>
+    aTitle > bTitle ? -1 : 1)
 }
 
 
@@ -303,8 +337,9 @@ async function displayBooks() {
   // -----------------------
 
   let filteredBooks = filterAll()
-
-  filteredBooks = sortAll(filteredBooks)
+  if (sortingBy !== "None") {
+    filteredBooks = sortAll(filteredBooks)
+  }
 
   // /////////////////
 
