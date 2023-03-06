@@ -38,32 +38,8 @@ async function componentMount() {
     let html = await fetchText(src);
     replaceElement(c, html);
   }
-  // repeatElements();
 }
 
-// repeat DOM elements if they have the attribute 
-// repeat = "x" set to a positive number
-// function repeatElements() {
-//   while (true) {
-//     let r = $('[repeat]');
-//     if (!r) { break; }
-//     let count = Math.max(1, +r.getAttribute('repeat'));
-//     r.removeAttribute('repeat');
-//     for (let i = 0; i < count - 1; i++) {
-//       let html = unsplashFix(r.outerHTML);
-//       replaceElement(r, html, false);
-//     }
-//   }
-// }
-
-// special fix on repeat of random unsplash image
-// (so that we don't cache and show the same image)
-// function unsplashFix(html) {
-//   return html.replace(
-//     /(https:\/\/source.unsplash.com\/random\/?[^"]*)/g,
-//     '$1&' + Math.random()
-//   );
-// }
 
 // listen to click on all a tags
 $('body').addEventListener('click', e => {
@@ -122,34 +98,26 @@ function setActiveLinkInNavbar() {
   newActive && newActive.classList.add('active');
 }
 
-
-
-
 // initially, on hard load/reload:
 // mount components and load the page
 componentMount().then(x => loadPage());
 
-// //////////////////////////////////////////
-// //////////////////////////////////////////
-// // BOOKS
 
+// //////////////////////////////////////////
+// //////////////////////////////////////////
+// // BOOKS SECTION code
 
 import { getJSON } from "./utils/getJsonFile"
 let books
 
-let categories = []
 let authors = []
-let titles = []
-let prices = []
+let categories = []
 
-let categoryFilterApplied = "All"
 let authorFilterApplied = "All"
-let titleFilterApplied = "All"
+let categoryFilterApplied = "All"
 let priceFilterApplied = "All"
+let sortingBy = "None"
 
-
-let filter = ""
-let ascendDescend = ""
 
 
 async function showBooksAndFilters() {
@@ -157,106 +125,49 @@ async function showBooksAndFilters() {
 
   displayBooks()
 
-  // chooseYourFilter()
-
   getCategories()
   getAuthors()
-  // getPrices()
-  // getTitles()
 
-  // rest
   addCategoryFilter()
   addAuthorFilter()
+  addPriceFilter()
 
+  sorting()
 }
 
 
-// Initially the user chooses a filter
-// function chooseYourFilter() {
-
-//   displayBooks();
-
-//   document.querySelector(".choose-filter").innerHTML = /*html*/ `
-//     <label>Filter by:
-//       <select class="sortOption">
-//         <option></option>
-//         <option>Author</option>
-//         <option>Category</option>
-//         <option>Price</option>
-//         <option>Title</option>
-//       </select>
-//     </label>
-//   `;
-//   document.querySelector(".sortOption").addEventListener('change', event => {
-//     filter = event.target.value
-//     if (filter === "") {
-//       document.querySelector(".category-filtering").style.display = "none"
-//       displayBooks();
-
-//     }
-//     else if (filter === "Category") {
-//       document.querySelector(".category-filtering").style.display = "show"
-//       addFilters()
-//     }
-//     else if (filter === "Price") {
-//       // document.querySelector(".category-filtering").style.display = "none"
-//     } else if (filter === "Title") {
-//       // document.querySelector(".category-filtering").style.display = "none"
-//     }
-//     // displayBooks();
-
-//   })
-// }
-
 
 /////////////////////////////////////
-// getting all of the book categories
+// Getting all of the book categories, authors
 function getCategories() {
   let allCat = books.map(book => book.category)
   categories = [...new Set(allCat)]
   categories.sort()
 }
 
+
 function getAuthors() {
-  let allAuthorsNames = []
-  let allAuthors = books.map(book => book.author.split(", "))
-  allAuthors.forEach(names => names.forEach(name => allAuthorsNames.push(name)))
-  authors = [...new Set(allAuthorsNames)]
+  let allAuthors = books.map(book => book.author)
+  authors = [...new Set(allAuthors)]
   authors.sort(function (a, b) {
     let aa = a.split(" ")
     let bb = b.split(" ")
     return aa[aa.length - 1].toLowerCase() > bb[bb.length - 1].toLowerCase() ? 1 : -1
   })
-
 }
 
 
-////////////////////////////////////=
-// add the catogory dropdown filter
-function addCategoryFilter() {
-
-  document.querySelector(".category-filtering").innerHTML = /*html*/`
-  <label> Category:
-    <select class="categoryFilter">
-      <option> All </option>
-        ${categories.map(category => `<option> ${category} </option>`).join("")}
-      </select>
-    </label>
-    `;
-  document.querySelector(".categoryFilter").addEventListener('change', event => {
-    categoryFilterApplied = event.target.value;
-    displayBooks()
-  })
-}
-
-
+////////////////////////////////////
+// FILTERING
 function addAuthorFilter() {
-  document.querySelector(".author-filtering").innerHTML = /*html*/ `<label> Authors:
-    <select class="authorFilter">
-      <option> All </option>
-        ${authors.map(author => `<option> ${author} </option>`).join("")}
+  document.querySelector(".author-filtering").innerHTML = /*html*/`
+    <label> Authors:
+      <select class="authorFilter form-select" aria-label="Authors">
+        <option>All</option>
+         ${authors.map(author => `<option> ${author} </option>`).join("")}
       </select>
     </label>
+
     `;
   document.querySelector(".authorFilter").addEventListener('change', event => {
     authorFilterApplied = event.target.value;
@@ -265,43 +176,138 @@ function addAuthorFilter() {
 }
 
 
-// function addFilters() {
-//   document.querySelector(".filtering").innerHTML = /*html*/ `
-//   <label> Category:  </label>
+function addCategoryFilter() {
+  document.querySelector(".category-filtering").innerHTML = /*html*/`
+    <label> Category:
+      <select class="categoryFilter form-select" aria-label="Category">
+        <option>All</option>
+          ${categories.map(category => `<option> ${category} </option>`).join("")}
+      </select>
+    </label>
+    `;
 
-//       <button class="btn scategoryFilter"> All </button>
-//         ${categories.map(cat => `<button class=" btn categoryFilter"> ${cat} </button>`).join("")}
-
-//     `;
-//   document.querySelector(".categoryFilter").addEventListener('change', event => {
-//     categoryFilterApplied = event.target.value;
-//     displayBooks()
-//   })
-
-/* <nav class="navbar navbar-inverse">
-  <ul class="nav navbar-nav">
-    <li><a href="#">Link</a></li>
-    <li><a href="#">Link</a></li>
-  </ul>
-  <p class="navbar-text">Some text</p>
-</nav> */
-// }
+  document.querySelector(".categoryFilter").addEventListener('change', event => {
+    categoryFilterApplied = event.target.value;
+    displayBooks()
+  })
+}
 
 
+function addPriceFilter() {
+  document.querySelector(".price-filtering").innerHTML = /*html*/`
+    <label> Price:
+      <select class="priceFilter form-select" aria-label="Price">
+        <option>All</option>
+        <option>0 - 250 SEK</option>
+        <option>251 - 500 SEK</option>
+        <option>501 - 750 SEK</option>
+        <option>751 - 1000 SEK</option>
+        <option>1000+ SEK</option>
+      </select>
+    </label>
+    `;
+
+  document.querySelector(".priceFilter").addEventListener('change', event => {
+    priceFilterApplied = event.target.value;
+    displayBooks()
+  })
+}
 
 
+function filterAll() {
 
-async function displayBooks() {
   let filteredBooks
 
-  filteredBooks = books.filter(({ category }) => categoryFilterApplied === "All"
-    || categoryFilterApplied === category)
+  if (priceFilterApplied === "All") {
+    filteredBooks = books.filter(({ author, category, price }) => (authorFilterApplied === "All"
+      || author.includes(authorFilterApplied))
+      && (categoryFilterApplied === "All" || categoryFilterApplied === category)
+      && (priceFilterApplied === "All"))
 
-  filteredBooks = books.filter(({ author }) => authorFilterApplied === "All"
-    || author.includes(authorFilterApplied))
 
+  } else if (priceFilterApplied === "1000+ SEK") {
+    filteredBooks = books.filter(({ author, category, price }) => (authorFilterApplied === "All"
+      || author.includes(authorFilterApplied))
+      && (categoryFilterApplied === "All" || categoryFilterApplied === category)
+      && (price > 1000))
+
+  } else {
+    let min = priceFilterApplied.split(" ")[0]
+    let max = priceFilterApplied.split(" ")[2]
+    filteredBooks = books.filter(({ author, category, price }) => (authorFilterApplied === "All"
+      || author.includes(authorFilterApplied))
+      && (categoryFilterApplied === "All" || categoryFilterApplied === category)
+      && (price >= min && price < max))
+  }
+
+  return filteredBooks
+
+}
+
+
+
+
+////////////////////////////////////
+// SORTING
+
+function sorting() {
+  document.querySelector(".ascending-descending").innerHTML = /*html*/ `
+    <label>Sort by:
+      <select class="sortingOption form-select" aria-label="Sorting">
+
+        <option>None</option>
+        <option>Author: A -> Z</option>
+        <option>Author: Z -> A</option>
+        <option>Price: low to high</option>
+        <option>Price: high to low</option>
+        <option>Title: A -> Z</option>
+        <option>Title: Z -> A</option>
+
+      </select>
+    </label>
+  `;
+
+  document.querySelector(".sortingOption").addEventListener('change', event => {
+    sortingBy = event.target.value
+    displayPersons()
+  })
+}
+
+
+function sortAll(filteredBooks) {
+
+  // if (chosenSortOption === "last name") { sortByLastName(filteredPersons) }
+  // if (chosenSortOption === "age") { sortByAge(filteredPersons) }
+
+
+
+  //       <option>None</option>
+  //       <option>Author: A -> Z</option>
+  //       <option>Author: Z -> A</option>
+  //       <option>Price: low to high</option>
+  //       <option>Price: high to low</option>
+  //       <option>Title: A -> Z</option>
+  //       <option>Title: Z -> A</option>
+
+  return filteredBooks
+}
+
+
+
+////////////////////////////////////
+// display all the books
+async function displayBooks() {
+
+  // fetching hipster ipsum description
   // let description = await (await (await fetch("api/?type=hipster-centric&paras=3")).json())
   // -----------------------
+
+  let filteredBooks = filterAll()
+
+  filteredBooks = sortAll(filteredBooks)
+
+  // /////////////////
+
 
   let bookItem = filteredBooks.map(({
     id, title, author, description, category, price, cover
@@ -340,9 +346,13 @@ async function displayBooks() {
 }
 
 
+
+////////////////////////////////////
+// add data to modal about a book - "read more" 
 document.querySelector('body').addEventListener('click', event => {
 
   let cards = event.target.closest('.book-card')
+
   if (cards) {
     console.log("here", cards.getAttribute("data-id"))
     const id = Number(cards.getAttribute("data-id"))
@@ -354,7 +364,7 @@ document.querySelector('body').addEventListener('click', event => {
     document.querySelector('.book-desc').innerHTML = b[0].description;
     document.querySelector('.book-category').innerHTML = b[0].category;
     document.querySelector('.book-price').innerHTML = b[0].price;
-    let cover = `<img src=${b[0].cover} class="col-md-6 float-md-end mb-3 ms-md-3" alt=${b[0].title}>`
+    let cover = `<img src=${b[0].cover} class="col-sm-12 col-lg-5 float-md-end mb-3 ms-md-3" alt=${b[0].title}>`
     document.querySelector('.book-cover').innerHTML = cover;
 
   }
@@ -367,7 +377,5 @@ document.querySelector('body').addEventListener('click', event => {
 //   .filter(x => x !== ux)
 //   .map(x => '<>')
 
-  // .reduce() -
-  // .sort()
-
-
+//   .reduce() -
+//   .sort()

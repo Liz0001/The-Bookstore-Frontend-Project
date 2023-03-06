@@ -3,40 +3,62 @@
     <h2 class="mb-3">Books</h2>
 
 
-    <!-- the main filter -->
-    <div class="choose-filter"></div>
+    <!--  -->
+    <!-- <div class="row filter-row">
 
-    <div class="author-filtering"></div>
-    <div class="category-filtering"> </div>
+      <div class="col-9">
+        <div class="author-filtering"></div>
+        <div class="category-filtering"> </div>
+        <div class="price-filtering"></div>
+      </div>
+      <div class="col-3 align-self-end">
+        <div class="ascending-descending"></div>
+      </div>
+    </div> -->
+    <!--  -->
 
-    <div class="price-filtering"></div>
-    <div class="title-filtering"></div>
-    <div class="ascending-descending"></div>
-    <hr>
 
 
     <!-- ADD MENU AND COLLAPSE AREA FOR FILTERS -->
-    <!-- <div>
-      <a class="link-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample"
-        aria-expanded="false" aria-controls="collapseExample">
-        Filter
-      </a>
 
-      <div class="collapse" id="collapseExample">
-        <nav class="nav justify-content-center">
-          <a class="nav-link active" aria-current="page" href="#">Authors</a>
-          <a class="nav-link" href="#">Category</a>
-          <a class="nav-link" href="#">Price</a>
-          <a class="nav-link" href="#">Title</a>
-        </nav>
+
+    <div>
+      <button class="btn btn-outline-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample"
+        aria-expanded="false" aria-controls="collapseExample">
+        Filter & Sort
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-filter"
+          viewBox="0 0 16 16">
+          <path
+            d="M6 10.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z" />
+        </svg>
+      </button>
+
+      <div class="collapse" id="collapseExample" target="#filter">
+
+
+        <div class="row filter-row">
+
+          <div class="col-9">
+            <div class="author-filtering"></div>
+            <div class="category-filtering"> </div>
+            <div class="price-filtering"></div>
+          </div>
+          <div class="col-3 align-self-end">
+            <div class="ascending-descending"></div>
+          </div>
+        </div>
+
       </div>
-    </div> -->
+    </div>
+
+
+
 
 
     <!-- ALL THE BOOKS -->
     <div class="bookList mt-3"></div>
 
-    <!--modal  -->
+    <!-- detailed view of books modal  -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered modal-xl modal-dialog-scrollable">
         <div class="modal-content">
@@ -49,40 +71,21 @@
 
           <!-- body -->
           <div class="modal-body">
-            <!-- ..... -->
-            <!-- <div class="book-cover"></div>
-            <p class="book-category"></p>
-            <h2 class="book-title"></h2>
-            <h3 class="book-author"></h3>
-            <p class="book-price"></p>
-
-            <p class="book-desc"></p> -->
-
 
             <div class="clearfix">
-              <!-- <img src="..." class="col-md-6 float-md-end mb-3 ms-md-3" alt="..."> -->
               <div class="book-cover"></div>
+
               <h2 class="book-title"></h2>
               <h3>By <span class="book-author"></span></h3>
               <p>Price: <span class="book-price"></span> SEK</p>
               <p class="book-category"></p>
 
               <p class="book-desc"></p>
-
             </div>
-
-
-
-
-
 
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-primary add-to-basket">Add to Basket</button>
-
-
-
-
 
           </div>
         </div>
