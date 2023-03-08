@@ -1,14 +1,17 @@
 @import '../node_modules/bootstrap/scss/functions';
-@import '../node_modules/bootstrap/scss/variables';
+// @import '../node_modules/bootstrap/scss/variables';
 
 
 
 $primary: #7999ae;
 $font-family-sans-serif: 'Merriweather';
 $font-family-base: 'Merriweather';
-$font-size-base: 1.3rem;
+$font-size-base: 1.2rem;
 
 
 $theme-colors: (
   "primary": $primary
 );
+
+
+$offcanvas-horizontal-width: 500px !default;
