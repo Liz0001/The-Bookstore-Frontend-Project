@@ -67,38 +67,14 @@ main .row.filter-row {
   height: 100%;
 }
 
+footer {
+  background-color: #a4c0db;
+}
 
 //////////////////////
-// sorting label
-
-
-//////////////////////
-/// Modal
-// .book-cover img {
-//   max-height: 500px;
-// }
-
-// limits the words on the book card
-// .limit {
-//   max-width: 80ch;
-//   padding: 0px 0 20px;
-//   // margin-bottom: 10px;
-//   // border: 1px solid #fed;
-//   // background-color: black;
-// }
-
-// .limit p {
-//   // max-width: 80ch;
-//   overflow: hidden;
-//   display: -webkit-box;
-//   -webkit-line-clamp: 3;
-//   -webkit-box-orient: vertical;
-// }
-
-// ////////////////////
 
 .navigation-section {
-  // background-image: url('https://source.unsplash.com/random/?background');
+
   background-color: #a4c0db;
   background-size: cover;
   background-attachment: fixed;
@@ -109,8 +85,60 @@ main .row.filter-row {
   box-shadow: 2px 2px 7px #ced4d8;
 }
 
+
+//////////////////////
+// hero
+
+.hero {
+  width: 100vw;
+  height: 100vh;
+  background-image: url('./img/bookstore.jpg');
+  background-size: cover;
+  background-position: center;
+  aspect-ratio: 1 / 1;
+}
+
+.hero-cover {
+  width: 100%;
+  height: 100%;
+  background-color: #5c697598;
+}
+
+.hero-text {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 35vh;
+  width: 50vw;
+  color: white;
+  font-size: 1.8rem;
+}
+
+.hero-text p {
+  text-shadow: 5px 10px 10px#42484e;
+}
+
+.logo-text.big {
+  font-size: 2.5rem;
+  color: white;
+  text-shadow: 5px 10px 10px#42484e;
+}
+
+.checkOutTheBooks {
+  background-color: #a4c0db;
+  outline-color: white;
+}
+
+.checkOutTheBooks:hover {
+  outline-color: white;
+  background-color: white;
+  color: black;
+}
+
+
+////////////////////////
 // /////////////////////
-// 1200px and bigger
+// 992px and bigger
 @media (min-width: 992px) {
 
   .navbar-toggler.burgerButton {
@@ -122,8 +150,31 @@ main .row.filter-row {
   }
 }
 
-// up to 600px
-@media (max-width: 600px) {
+// up to 992px
+@media (max-width: 992px) {
+  .book-cover img {
+    max-height: 250px;
+    margin-bottom: 30px;
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+  }
+}
+
+
+
+// up to 576px
+@media (max-width: 576px) {
+
+  body,
+  .form-control {
+    font-size: 1rem;
+  }
+
+  .card-body p:first-of-type {
+    margin-top: -20px;
+  }
 
   .logo-text,
   .footer-text {
@@ -131,8 +182,32 @@ main .row.filter-row {
     font-size: 20px;
   }
 
+  .btn {
+    font-size: 16px;
+    padding: 5px 10px;
+  }
+
+  .footer-text {
+    font-size: 15px;
+  }
+
+  footer .logo {
+    // display: none;
+    height: 20px;
+    margin: 0;
+  }
+
+  .logo-text.big {
+    line-height: 1;
+    font-size: 1.5rem;
+  }
+
+  .hero-text {
+    font-size: 1.2rem;
+  }
+
   .logo {
-    width: 30px;
+    width: 35px;
   }
 
   .basket-section {
@@ -141,30 +216,65 @@ main .row.filter-row {
 
   button.basketButton.navbar-toggler,
   button.burgerButton.navbar-toggler {
-    width: 40px;
-    height: 30px;
+    width: 35px;
+    height: 35px;
     padding: 0;
   }
 
   svg.bi.bi-basket3,
+  svg.bi.bi-basket3-fill,
+  .basketButton svg,
   .navbar-toggler-icon {
     width: 25px;
-    height: 20px;
+    height: 25px;
     border-radius: 1px;
   }
+
+  .card img {
+    max-height: 250px;
+    margin-bottom: 30px;
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+  }
+
+  .offcanvas {
+    --#{$prefix}offcanvas-width: min(95vw, 340px) !important;
+  }
+
 }
 
 
 /////////////////////////////////////////
 // GALAXY fold - style, if there should be any 
+
 @media (max-width: 350px) {
 
-  .logo-text,
-  .footer-text {
+  body,
+  .form-control {
+    font-size: 0.8rem;
+  }
+
+  .btn {
+    font-size: 16px;
+    padding: 5px 10px;
+    margin-bottom: 5px;
+  }
+
+  .card-body p:first-of-type {
+    margin-top: -15px;
+  }
+
+  .logo-text {
     font-size: 18px;
   }
 
-  nav .logo {
+  .footer-text {
+    font-size: 15px;
+  }
+
+  .logo {
     display: none;
   }
 
@@ -174,13 +284,16 @@ main .row.filter-row {
 
   button.basketButton.navbar-toggler,
   button.burgerButton.navbar-toggler {
-    width: 25px;
-    height: 25px;
+    margin-top: 5px;
+    width: 30px;
+    height: 30px;
   }
 
   svg.bi.bi-basket3,
-  .navbar-toggler-icon {
-    width: 15px;
-    height: 15px;
+  .navbar-toggler-icon,
+  svg.bi.bi-basket3-fill,
+  .basketButton svg {
+    width: 18px;
+    height: 18px;
   }
 }

@@ -15,7 +15,6 @@
     "vite-plugin-live-reload": "^3.0.1"
   },
   "dependencies": {
-    "bootstrap": "^5.2.3",
-    "bootstrap-icons": "^1.10.3"
+    "bootstrap": "^5.2.3"
   }
 }

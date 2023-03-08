@@ -140,7 +140,6 @@ function filterAll() {
 }
 
 
-
 ////////////////////////////////////
 // SORTING
 function sorting() {
@@ -231,7 +230,6 @@ async function displayBooks() {
     filteredBooks = sortAll(filteredBooks)
   }
 
-  // console.log(filteredBooks)
   // /////////////////
   let bookItem = filteredBooks.map(({
     id, title, author, description, category, price, cover
@@ -241,11 +239,11 @@ async function displayBooks() {
     <div class="card book-card mb-3">
       <div class="row g-0">
 
-        <div class="col-md-4">
+        <div class="col-sm-4">
           <img src=${cover} class="img-fluid rounded-start photo" alt=${title}>
         </div>
 
-        <div class="col-md-8">
+        <div class="col-sm-8">
           <div class="card-body">
             <p>${category}</p>
             <h3 class="card-title">${title}</h3>
@@ -271,7 +269,6 @@ async function displayBooks() {
 }
 
 
-
 ////////////////////////////////////
 // add data to modal about a book - "read more" 
 document.querySelector('body').addEventListener('click', event => {
@@ -279,7 +276,6 @@ document.querySelector('body').addEventListener('click', event => {
   let readMore = event.target.closest('.read-more')
 
   if (readMore) {
-    // console.log("Read More button clikked, ID:", readMore.getAttribute("data-id"))
     const id = Number(readMore.getAttribute("data-id"))
     let b = books.filter(b => b.id === id)
 
@@ -293,19 +289,9 @@ document.querySelector('body').addEventListener('click', event => {
     let cover = `<img src=${b[0].cover} alt=${b[0].title}
     class="col-sm-12 col-lg-5 float-md-end mb-3 ms-md-3">`
     document.querySelector('.book-cover').innerHTML = cover;
-    // document.querySelector('.bookId').innerHTML = `<span data-id=${id}></span>`
 
     let addButton = `<button type="button" data-id=${id} class="btn btn-primary add-to-basket-2">Add to Basket</button>`
     document.querySelector('.modal-footer').innerHTML = addButton
 
   }
 })
-
-
-// filter the elements
-// ['ux', 'js', 'js', 'ux']
-//   .filter(x => x !== ux)
-//   .map(x => '<>')
-
-//   .reduce() -
-//   .sort()

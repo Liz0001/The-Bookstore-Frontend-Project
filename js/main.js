@@ -1,3 +1,4 @@
+
 /////////////////////////////////////////////
 import { showBooksAndFilters } from "./books-main"
 import "./basket-main"
@@ -85,6 +86,8 @@ async function loadPage(src = location.pathname) {
   if (window.location.pathname === "/books") {
     showBooksAndFilters()
   }
+  // removeContainerIfHome()
+
 }
 
 // set the correct link active in navbar match on
@@ -107,4 +110,20 @@ function setActiveLinkInNavbar() {
 // initially, on hard load/reload:
 // mount components and load the page
 componentMount().then(x => loadPage());
+
+
+
+
+/////////////////////////////////////
+// close navbar automatically
+
+document.querySelector('body').addEventListener('click', event => {
+
+  let openBtn = event.target.closest(".nav-link")
+  let brgBtn = window.getComputedStyle(document.querySelector('.burgerButton')).display
+
+  if (openBtn && brgBtn !== "none") {
+    document.querySelector('.burgerButton').click()
+  }
+})
 
