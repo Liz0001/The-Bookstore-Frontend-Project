@@ -3,27 +3,13 @@
 @import 'variable-overrides';
 @import '../node_modules/bootstrap/scss/bootstrap';
 
+body {
+  overflow-x: hidden;
+}
 
 body::-webkit-scrollbar {
   display: none;
 }
-
-////////////
-/// custom scrollbar
-// body::-webkit-scrollbar {
-//   width: 5px;
-//   height: 8px;
-//   background-color: #aaa;
-//   /* or add it to the track */
-// }
-
-// /* Add a thumb */
-
-// body::-webkit-scrollbar-thumb {
-//   background: #000;
-// }
-////////////
-
 
 main .row:first-of-type {
   margin-top: 100px;
@@ -108,7 +94,7 @@ footer {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  padding-top: 35vh;
+  padding-top: 40vh;
   width: 50vw;
   color: white;
   font-size: 1.8rem;
@@ -167,6 +153,7 @@ footer {
 // up to 576px
 @media (max-width: 576px) {
 
+  select.form-select,
   body,
   .form-control {
     font-size: 1rem;

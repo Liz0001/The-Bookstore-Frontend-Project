@@ -135,7 +135,6 @@ document.querySelector('body').addEventListener('click', event => {
   if (less) {
     const id1 = Number(less.getAttribute("data-id"))
     takeOffThebook(id1)
-    console.log("lesss", id1)
   }
   if (more) {
     const id2 = Number(more.getAttribute("data-id"))
