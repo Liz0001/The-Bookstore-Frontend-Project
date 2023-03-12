@@ -1,11 +1,11 @@
-ASSIGNMENT 1 (2,5 HP - LEARNING GOAL 1 AND 2)
+ASSIGNMENT 1 - The Bookstore
 =============================================
 
-- Using HTML, CSS, Bootstrap, JavaScript and JSON to build a small web site.
+- Using HTML, CSS, Bootstrap, JavaScript, JSON and Vite to build a small SPA(single page application) web site.
 - Writing about the web technologies you use, as part of the content on the site.
 
 
-Assignment
+Assignment:
 ==========
 
 1. Create a web shop / online store that sells computer books about frontend development.
