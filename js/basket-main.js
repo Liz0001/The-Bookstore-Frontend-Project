@@ -61,13 +61,15 @@ async function addBookToBasket() {
   }) => /*html*/ `    
     <li class="list-group-item">
       <div>
-        <span class="nrOfItems">${nrOfBooks}x </span>
+        
         <span class="bookName">${name}</span>
       </div>
 
       <div class="d-flex justify-content-between">
         <div>
-          <span class="bookPrice">${cost} SEK </span>
+          <span class="nrOfItems">${nrOfBooks}x </span>
+          <span class="bookPrice">${cost} </span>
+          <span class="nrOfItems"> = ${nrOfBooks * cost} SEK </span>
         </div>
         <div>
           <button class="takeOffBook btn" data-id=${id}>-</button>
@@ -89,7 +91,7 @@ function calculateBasketTotal(basket) {
   basket.map(x => sum += (x.cost * x.nrOfBooks))
 
   document.querySelector('.hrLine').innerHTML = `<hr>`
-  let total = `<p class="pt-2">Total: ${sum} SEK </p>`
+  let total = `<p class="pt-2">Your total: ${sum} SEK </p>`
   document.querySelector('.baskeTotal').innerHTML = total
   let checkout = `<button class="btn btn-primary">Checkout</button>`
   document.querySelector('.proceedToCheckout').innerHTML = checkout
